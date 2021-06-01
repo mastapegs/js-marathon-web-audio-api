@@ -19,7 +19,10 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint", "prettier"],
   rules: {
+    "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": "off",
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [
       1,
