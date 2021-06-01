@@ -1,9 +1,10 @@
 import { FC } from "react";
+import { Header } from "../components/Header";
 
 const Home: FC = () => {
   return (
     <>
-      <h1>Web Audio API</h1>
+      <Header />
     </>
   );
 };
