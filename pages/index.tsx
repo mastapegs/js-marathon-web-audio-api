@@ -5,7 +5,7 @@ const Home: FC = () => {
     <>
       <h1>Web Audio API</h1>
     </>
-  )
-}
+  );
+};
 
 export default Home;
