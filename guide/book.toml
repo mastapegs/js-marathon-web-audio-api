@@ -1,0 +1,5 @@
+[book]
+authors = ["Matthew Pagan"]
+language = "en"
+multilingual = false
+src = "src"
