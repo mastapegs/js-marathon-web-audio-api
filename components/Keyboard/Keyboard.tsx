@@ -18,7 +18,7 @@ export const Keyboard: FC = () => {
     mainGainNode.gain.value = volume;
   }, [volume, mainGainNode]);
   return (
-    <>
+    <div id="keyboard">
       {noteFreq &&
         (() => {
           const keys: Array<ReactNode> = [];
@@ -30,6 +30,6 @@ export const Keyboard: FC = () => {
           });
           return keys;
         })()}
-    </>
+    </div>
   );
 };
