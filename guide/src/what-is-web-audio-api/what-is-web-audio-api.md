@@ -15,3 +15,5 @@ Linking together different chains of audio nodes is what gives developers the fl
 3. Create effects, such as reverb, biquad filter, or gain
 4. Select final destination for audio
 5. Connect sources to effects and effects to destination
+
+![Web Audio API audio routing graph](./audio-context.png)
