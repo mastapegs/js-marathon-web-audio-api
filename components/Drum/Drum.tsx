@@ -20,22 +20,6 @@ export const Drum: FC = () => {
     kickDrum.start(now);
     kickDrum.stop(now + 0.5);
   };
-  const noiseBuffer = (): AudioBuffer | null => {
-    if (!audioContext) return null;
-    const bufferSize = audioContext.sampleRate;
-    const buffer = audioContext.createBuffer(
-      1,
-      bufferSize,
-      audioContext.sampleRate
-    );
-    const output = buffer.getChannelData(0);
-
-    for (let i = 0; i < bufferSize; i++) {
-      output[i] = Math.random() * 2 - 1;
-    }
-
-    return buffer;
-  };
   const distortionCurve = () => {
     const curve = new Float32Array(65536);
     let x = 0;
@@ -79,6 +63,9 @@ export const Drum: FC = () => {
 
     const snareGainNode = audioContext.createGain();
     snareGainNode.gain.value = 1;
+
+    // lowTriangle -> lowWaveShaper -> lowTriangleGainNode -> snareGainNode -> Speakers
+    // highTriangle -> highWaveShaper -> highTriangleGainNode -> snareGainNode -> Speakers
 
     lowTriangle.connect(lowWaveShaper);
     lowWaveShaper.connect(lowTriangleGainNode);
