@@ -33,5 +33,18 @@ export const createNoteTable = (): NoteTable => {
   noteFreq[1]["A#"] = 58.27;
   noteFreq[1]["B"] = 61.74;
 
+  noteFreq[2]["C"] = 65.41;
+  noteFreq[2]["C#"] = 69.3;
+  noteFreq[2]["D"] = 73.42;
+  noteFreq[2]["D#"] = 77.78;
+  noteFreq[2]["E"] = 82.41;
+  noteFreq[2]["F"] = 87.31;
+  noteFreq[2]["F#"] = 92.5;
+  noteFreq[2]["G"] = 98.0;
+  noteFreq[2]["G#"] = 103.83;
+  noteFreq[2]["A"] = 110.0;
+  noteFreq[2]["A#"] = 116.54;
+  noteFreq[2]["B"] = 123.47;
+
   return noteFreq;
 };
