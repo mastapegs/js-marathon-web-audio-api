@@ -19,9 +19,11 @@ export const Key: FC<KeyProps> = ({ note, octave, freq }) => {
   };
 
   const notePressed: MouseEventHandler<HTMLButtonElement> = (e) => {
-    if (e.buttons !== 1) return;
+    console.log(e);
     const newOscList = [...oscList];
-    newOscList[octave].note = playTone();
+    // newOscList[octave].note = playTone();
+    newOscList[octave] = { note: playTone() };
+    console.log({ newOscList });
     setOscList(newOscList);
   };
   const noteReleased: MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -32,9 +34,9 @@ export const Key: FC<KeyProps> = ({ note, octave, freq }) => {
     <button
       type="button"
       onMouseDown={(e) => notePressed(e)}
-      onMouseOver={(e) => notePressed(e)}
+      // onMouseOver={(e) => notePressed(e)}
       onMouseUp={(e) => noteReleased(e)}
-      onMouseLeave={(e) => noteReleased(e)}
+      // onMouseLeave={(e) => noteReleased(e)}
       className="flex h-20 border border-black rounded shadow-lg"
     >
       <span className="inline-block w-8 text-center">
