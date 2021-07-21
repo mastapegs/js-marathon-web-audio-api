@@ -18,7 +18,7 @@ export const Keyboard: FC = () => {
     mainGainNode.gain.value = volume;
   }, [volume, mainGainNode]);
   return (
-    <div id="keyboard" className="flex overflow-auto">
+    <div id="keyboard" className="flex p-4 overflow-auto space-x-1">
       {noteFreq &&
         (() => {
           const keys: Array<ReactNode> = [];
