@@ -1,4 +1,4 @@
 # Summary
 
-- [Chapter 1](./chapter_1.md)
-- [Chapter 2](./chapter_2.md)
+- [JavaScript Marathon - Web Audio API](./js-marathon-intro.md)
+- [Audio Context](./audio-context.md)
