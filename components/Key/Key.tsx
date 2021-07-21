@@ -6,5 +6,8 @@ interface KeyProps {
   freq: number;
 }
 export const Key: FC<KeyProps> = ({ note, octave, freq }) => (
-  <p>{`Key: ${note}, Octave: ${octave}, Freq: ${freq}`}</p>
+  <div className="inline-block">
+    {note}
+    <sub>{octave}</sub>
+  </div>
 );
