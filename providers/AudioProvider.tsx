@@ -4,8 +4,11 @@ import { AudioContext } from "../contexts/AudioContext";
 export const AudioProvider: FC = ({ children }) => {
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
   const [volume, setVolume] = useState(0.5);
-  const [oscList, setOscList] = useState([] as any[]);
+  const [oscList, setOscList] = useState(
+    [] as Array<{ [key: string]: OscillatorNode }>
+  );
   const [mainGainNode, setMainGainNode] = useState<GainNode | null>(null);
+  const [waveform, setWaveform] = useState("sine");
   return (
     <>
       <AudioContext.Provider
@@ -18,6 +21,8 @@ export const AudioProvider: FC = ({ children }) => {
           setOscList,
           mainGainNode,
           setMainGainNode,
+          waveform,
+          setWaveform,
         }}
       >
         {children}

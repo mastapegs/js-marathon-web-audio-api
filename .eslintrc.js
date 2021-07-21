@@ -22,6 +22,7 @@ module.exports = {
   rules: {
     "dot-notation": "off",
     "no-plusplus": "off",
+    "jsx-a11y/mouse-events-have-key-events": "off",
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": "off",
     "import/extensions": "off",
@@ -33,6 +34,7 @@ module.exports = {
     ],
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
     "prettier/prettier": "error",
   },
 };
