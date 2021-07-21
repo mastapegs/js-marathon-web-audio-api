@@ -2,6 +2,12 @@ import { FC, useContext } from "react";
 import { Header } from "../components/Header";
 import { AudioContext } from "../contexts/AudioContext";
 
+declare global {
+  interface Window {
+    webkitAudioContext?: typeof AudioContext;
+  }
+}
+
 const Home: FC = () => {
   const { audioContext, setAudioContext, volume, setVolume } =
     useContext(AudioContext);
