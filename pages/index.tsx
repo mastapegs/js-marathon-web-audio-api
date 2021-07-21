@@ -1,6 +1,7 @@
 import { FC, useContext } from "react";
 import { Header } from "../components/Header";
 import { AudioContext } from "../contexts/AudioContext";
+import { createNoteTable } from "../util/createNoteTable";
 
 declare global {
   interface Window {
@@ -71,6 +72,11 @@ const Home: FC = () => {
               </div>
             </div>
             <p>Volume set to {volume}</p>
+            <div>
+              <pre>
+                <code>{JSON.stringify(createNoteTable(), null, 2)}</code>
+              </pre>
+            </div>
           </div>
         </>
       )}
