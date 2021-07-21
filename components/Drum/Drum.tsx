@@ -58,10 +58,10 @@ export const Drum: FC = () => {
     highTriangle.frequency.value = 349;
 
     const lowWaveShaper = audioContext.createWaveShaper();
-    lowWaveShaper.curve = distortionCurve(5);
+    lowWaveShaper.curve = distortionCurve();
 
     const highWaveShaper = audioContext.createWaveShaper();
-    highWaveShaper.curve = distortionCurve(5);
+    highWaveShaper.curve = distortionCurve();
 
     const lowTriangleGainNode = audioContext.createGain();
     lowTriangleGainNode.gain.value = 1;
