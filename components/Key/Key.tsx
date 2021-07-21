@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler, useContext } from "react";
+import { FC, useContext } from "react";
 import { AudioContext } from "../../contexts/AudioContext";
 
 interface KeyProps {
@@ -18,12 +18,14 @@ export const Key: FC<KeyProps> = ({ note, octave, freq }) => {
     return osc;
   };
 
-  const notePressed: MouseEventHandler<HTMLButtonElement> = (e) => {
+  const notePressed = (e: any) => {
+    e.preventDefault();
     const newOscList = [...oscList];
     newOscList[octave] = { note: playTone() };
     setOscList(newOscList);
   };
-  const noteReleased: MouseEventHandler<HTMLButtonElement> = (e) => {
+  const noteReleased = (e: any) => {
+    e.preventDefault();
     if (!oscList[octave]) return;
     oscList[octave].note.stop();
     delete oscList[octave].note;
@@ -31,8 +33,10 @@ export const Key: FC<KeyProps> = ({ note, octave, freq }) => {
   return (
     <button
       type="button"
+      onTouchStart={(e) => notePressed(e)}
       onMouseDown={(e) => notePressed(e)}
       // onMouseOver={(e) => notePressed(e)}
+      onTouchEnd={(e) => noteReleased(e)}
       onMouseUp={(e) => noteReleased(e)}
       // onMouseLeave={(e) => noteReleased(e)}
       className="flex h-20 border border-black rounded shadow-lg"
