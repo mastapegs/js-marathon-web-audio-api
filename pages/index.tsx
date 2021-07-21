@@ -1,17 +1,34 @@
-import { FC, useContext, useEffect } from "react";
+import { FC, useContext } from "react";
 import { Header } from "../components/Header";
 import { AudioContext } from "../contexts/AudioContext";
 
 const Home: FC = () => {
   const { audioContext, setAudioContext, volume, setVolume } =
     useContext(AudioContext);
-  useEffect(() => {
-    setAudioContext(new window.AudioContext());
-  }, []);
   return (
     <>
       <Header />
-      {audioContext && (
+      {!audioContext.state && (
+        <>
+          <div
+            id="container"
+            className="flex justify-center m-4 p-4 border border-gray-200 rounded shadow-lg"
+          >
+            <button
+              onClick={() =>
+                setAudioContext(
+                  new (window.AudioContext || window.webkitAudioContext)()
+                )
+              }
+              type="button"
+              className="px-8 py-4 text-white font-semibold bg-blue-600 rounded shadow"
+            >
+              Start Audio App
+            </button>
+          </div>
+        </>
+      )}
+      {audioContext.state && (
         <>
           <div
             id="container"
