@@ -5,3 +5,4 @@
 - [Audio Context](./audio-context.md)
 - [Oscillator Nodes](./oscillator-nodes.md)
 - [Gain Nodes](./gain-nodes.md)
+- [Wave Shaper Nodes](./wave-shaper-nodes.md)
