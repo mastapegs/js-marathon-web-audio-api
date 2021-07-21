@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="js-marathon-intro.html"><strong aria-hidden="true">1.</strong> JavaScript Marathon - Web Audio API</a></li><li class="chapter-item expanded "><a href="what-is-web-audio-api/what-is-web-audio-api.html"><strong aria-hidden="true">2.</strong> What is the Web Audio API?</a></li><li class="chapter-item expanded "><a href="audio-context.html"><strong aria-hidden="true">3.</strong> Audio Context</a></li><li class="chapter-item expanded "><a href="oscillator-nodes.html"><strong aria-hidden="true">4.</strong> Oscillator Nodes</a></li><li class="chapter-item expanded "><a href="gain-nodes.html"><strong aria-hidden="true">5.</strong> Gain Nodes</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="js-marathon-intro.html">JavaScript Marathon - Web Audio API</a></li><li class="chapter-item expanded affix "><li class="part-title">Main Info</li><li class="chapter-item expanded "><a href="what-is-web-audio-api/what-is-web-audio-api.html"><strong aria-hidden="true">1.</strong> What is the Web Audio API?</a></li><li class="chapter-item expanded "><a href="audio-context.html"><strong aria-hidden="true">2.</strong> Audio Context</a></li><li class="chapter-item expanded "><a href="oscillator-nodes.html"><strong aria-hidden="true">3.</strong> Oscillator Nodes</a></li><li class="chapter-item expanded "><a href="gain-nodes.html"><strong aria-hidden="true">4.</strong> Gain Nodes</a></li><li class="chapter-item expanded "><a href="wave-shaper-nodes.html"><strong aria-hidden="true">5.</strong> Wave Shaper Nodes</a></li><li class="chapter-item expanded affix "><li class="part-title">Other Audio Nodes</li><li class="chapter-item expanded "><a href="biquad-filter.html"><strong aria-hidden="true">6.</strong> Bi-Quad Filter</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -222,6 +222,21 @@ gainNode.connect(audioContext.destination);
 sinewave.start();
 </code></pre>
 <p>This app connects every single OscillatorNode created by the keyboard to a single GainNode which controls the volume of them all.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="wave-shaper-nodes"><a class="header" href="#wave-shaper-nodes">Wave Shaper Nodes</a></h1>
+<h2 id="what-are-wave-shaper-nodes"><a class="header" href="#what-are-wave-shaper-nodes">What are Wave Shaper Nodes?</a></h2>
+<p>According to MDN:</p>
+<blockquote>
+<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/WaveShaperNode">WaveShaperNode</a> interface represents a non-linear distorter. It is an AudioNode that uses a curve to apply a wave shaping distortion to the signal.</p>
+</blockquote>
+<h2 id="where-is-this-used"><a class="header" href="#where-is-this-used">Where is this used?</a></h2>
+<p>This application uses the <code>WaveShaperNode</code> interface as part of the synthesis of the snare drum. It's used to gradually lower the amplitude of the pair of triangle waves used to generate the snare.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bi-quad-filter"><a class="header" href="#bi-quad-filter">Bi-Quad Filter</a></h1>
+<h2 id="what-is-the-bi-quad-filter"><a class="header" href="#what-is-the-bi-quad-filter">What is the Bi-Quad Filter</a></h2>
+<p>MDN says:</p>
+<blockquote>
+<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode">BiquadFilterNode</a> interface represents a simple low-order filter, and is created using the BaseAudioContext/createBiquadFilter method. It is an <code>AudioNode</code> that can represent different kinds of filters, tone control devices, and graphic equalizers.</p>
+</blockquote>
+<p>This app used the <code>WaveShaperNode</code> to help synthesize the snare drum, but the Biquad Filter could have been used as well.</p>
 
                     </main>
 
