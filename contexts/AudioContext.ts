@@ -9,6 +9,8 @@ interface AudioContextObject {
   setOscList: (oscList: []) => void;
   mainGainNode: GainNode | null;
   setMainGainNode: (mainGainNode: GainNode) => void;
+  waveform: string;
+  setWaveform: (waveform: string) => void;
 }
 
 export const AudioContext = createContext({} as AudioContextObject);

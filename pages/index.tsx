@@ -10,8 +10,14 @@ declare global {
 }
 
 const Home: FC = () => {
-  const { audioContext, setAudioContext, volume, setVolume } =
-    useContext(AudioContext);
+  const {
+    audioContext,
+    setAudioContext,
+    volume,
+    setVolume,
+    waveform,
+    setWaveform,
+  } = useContext(AudioContext);
   return (
     <>
       <Header />
@@ -62,13 +68,17 @@ const Home: FC = () => {
               </div>
               <div id="right">
                 <span>Current Waveform: </span>
-                <select name="waveform">
+                <select
+                  value={waveform}
+                  onChange={(e) => setWaveform(e.target.value)}
+                  name="waveform"
+                >
                   <option value="sine">Sine</option>
                   <option value="square">Square</option>
                   <option value="sawtooth">Sawtooth</option>
                   <option value="triangle">Triangle</option>
-                  <option value="custom">Custom</option>
                 </select>
+                <p>Waveform: {waveform}</p>
               </div>
             </div>
             <p>Volume set to {volume}</p>

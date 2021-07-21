@@ -6,6 +6,7 @@ export const AudioProvider: FC = ({ children }) => {
   const [volume, setVolume] = useState(0.5);
   const [oscList, setOscList] = useState([] as any[]);
   const [mainGainNode, setMainGainNode] = useState<GainNode | null>(null);
+  const [waveform, setWaveform] = useState("sine");
   return (
     <>
       <AudioContext.Provider
@@ -18,6 +19,8 @@ export const AudioProvider: FC = ({ children }) => {
           setOscList,
           mainGainNode,
           setMainGainNode,
+          waveform,
+          setWaveform,
         }}
       >
         {children}
