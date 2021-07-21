@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Gain Nodes</title>
+        <title>NextJS/Tailwind Starter</title>
                 
 
         <!-- Custom HTML head -->
@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="js-marathon-intro.html">JavaScript Marathon - Web Audio API</a></li><li class="chapter-item expanded affix "><li class="part-title">Main Info</li><li class="chapter-item expanded "><a href="what-is-web-audio-api/what-is-web-audio-api.html"><strong aria-hidden="true">1.</strong> What is the Web Audio API?</a></li><li class="chapter-item expanded "><a href="audio-context.html"><strong aria-hidden="true">2.</strong> Audio Context</a></li><li class="chapter-item expanded "><a href="oscillator-nodes.html"><strong aria-hidden="true">3.</strong> Oscillator Nodes</a></li><li class="chapter-item expanded "><a href="gain-nodes.html" class="active"><strong aria-hidden="true">4.</strong> Gain Nodes</a></li><li class="chapter-item expanded "><a href="wave-shaper-nodes.html"><strong aria-hidden="true">5.</strong> Wave Shaper Nodes</a></li><li class="chapter-item expanded affix "><li class="part-title">Other Audio Nodes</li><li class="chapter-item expanded "><a href="biquad-filter.html"><strong aria-hidden="true">6.</strong> Bi-Quad Filter</a></li><li class="chapter-item expanded affix "><li class="part-title">Template Repo for this Stack</li><li class="chapter-item expanded "><a href="starter.html"><strong aria-hidden="true">7.</strong> NextJS/Tailwind Starter</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="js-marathon-intro.html">JavaScript Marathon - Web Audio API</a></li><li class="chapter-item expanded affix "><li class="part-title">Main Info</li><li class="chapter-item expanded "><a href="what-is-web-audio-api/what-is-web-audio-api.html"><strong aria-hidden="true">1.</strong> What is the Web Audio API?</a></li><li class="chapter-item expanded "><a href="audio-context.html"><strong aria-hidden="true">2.</strong> Audio Context</a></li><li class="chapter-item expanded "><a href="oscillator-nodes.html"><strong aria-hidden="true">3.</strong> Oscillator Nodes</a></li><li class="chapter-item expanded "><a href="gain-nodes.html"><strong aria-hidden="true">4.</strong> Gain Nodes</a></li><li class="chapter-item expanded "><a href="wave-shaper-nodes.html"><strong aria-hidden="true">5.</strong> Wave Shaper Nodes</a></li><li class="chapter-item expanded affix "><li class="part-title">Other Audio Nodes</li><li class="chapter-item expanded "><a href="biquad-filter.html"><strong aria-hidden="true">6.</strong> Bi-Quad Filter</a></li><li class="chapter-item expanded affix "><li class="part-title">Template Repo for this Stack</li><li class="chapter-item expanded "><a href="starter.html" class="active"><strong aria-hidden="true">7.</strong> NextJS/Tailwind Starter</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -143,39 +143,25 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="gain-nodes"><a class="header" href="#gain-nodes">Gain Nodes</a></h1>
-<h2 id="what-are-gain-nodes"><a class="header" href="#what-are-gain-nodes">What are Gain Nodes?</a></h2>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/GainNode">Gain nodes</a> are responsible for manipulating the amplitude of audio sources.</p>
-<h2 id="how-to-create-and-use-a-gain-node"><a class="header" href="#how-to-create-and-use-a-gain-node">How to create and use a Gain Node</a></h2>
-<pre><code class="language-typescript">const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-
-// Create sine OscillatorNode
-const sinewave = audioContext.createOscillator();
-sinewave.type = &quot;sine&quot;;
-sinewave.frequency.value = 440; // A4
-
-// Create and create audio node chain
-// OscillatorNode -&gt; GainNode -&gt; Destination
-const gainNode = audioContext.createGain();
-gainNode.gain.value = 0.5;
-sinewave.connect(gainNode)
-gainNode.connect(audioContext.destination);
-
-sinewave.start();
-</code></pre>
-<p>This app connects every single OscillatorNode created by the keyboard to a single GainNode which controls the volume of them all.</p>
+                        <h1 id="nextjstailwind-starter"><a class="header" href="#nextjstailwind-starter">NextJS/Tailwind Starter</a></h1>
+<p>If you would like to get a fast start on using this stack, fork my repo and get started with a working &quot;Hello, World!&quot; template today!</p>
+<p>Tools included:</p>
+<ul>
+<li>NextJS</li>
+<li>TailwindCSS</li>
+<li>ESLint/Prettier</li>
+<li>Husky pre-commit linting</li>
+</ul>
+<p>Repo: <a href="https://github.com/mastapegs/linted-nextjs-tailwind-starter">https://github.com/mastapegs/linted-nextjs-tailwind-starter</a></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="oscillator-nodes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="biquad-filter.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
-                                                    <a rel="next" href="wave-shaper-nodes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
                         <div style="clear: both"></div>
                     </nav>
@@ -183,13 +169,10 @@ sinewave.start();
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="oscillator-nodes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="biquad-filter.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
-                                    <a rel="next" href="wave-shaper-nodes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                             </nav>
 
         </div>
