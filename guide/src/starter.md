@@ -5,6 +5,7 @@ If you would like to get a fast start on using this stack, fork my repo and get 
 Tools included:
 
 - NextJS
+- TypeScript
 - TailwindCSS
 - ESLint/Prettier
 - Husky pre-commit linting
