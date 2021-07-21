@@ -1,10 +1,11 @@
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, ReactNode, useContext, useEffect, useState } from "react";
 import { AudioContext } from "../../contexts/AudioContext";
 import { createNoteTable, NoteTable } from "../../util/createNoteTable";
 
 export const Keyboard: FC = () => {
   const [noteFreq, setNoteFreq] = useState<NoteTable | null>(null);
-  const { audioContext, volume, mainGainNode, setMainGainNode } = useContext(AudioContext);
+  const { audioContext, volume, mainGainNode, setMainGainNode } =
+    useContext(AudioContext);
   useEffect(() => {
     setNoteFreq(createNoteTable());
     const gainNode = audioContext!.createGain();
@@ -17,14 +18,19 @@ export const Keyboard: FC = () => {
   }, [volume, mainGainNode]);
   return (
     <>
-      <div id="keyboard">Keyboard</div>
-      {noteFreq && (
-        <div>
-          <pre>
-            <code>{JSON.stringify(createNoteTable(), null, 2)}</code>
-          </pre>
-        </div>
-      )}
+      {noteFreq &&
+        (() => {
+          const keys: Array<ReactNode> = [];
+          noteFreq.forEach((octaveTable, octave) => {
+            const keyList = Object.entries(octaveTable);
+            keyList.forEach((key) => {
+              keys.push(
+                <p>{`Key: ${key[0]}, Octave: ${octave}, Freq: ${key[1]}`}</p>
+              );
+            });
+          });
+          return keys;
+        })()}
     </>
   );
 };

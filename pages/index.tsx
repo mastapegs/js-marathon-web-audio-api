@@ -2,7 +2,6 @@ import { FC, useContext } from "react";
 import { Header } from "../components/Header";
 import { Keyboard } from "../components/Keyboard";
 import { AudioContext } from "../contexts/AudioContext";
-import { createNoteTable } from "../util/createNoteTable";
 
 declare global {
   interface Window {
