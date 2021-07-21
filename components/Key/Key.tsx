@@ -19,14 +19,12 @@ export const Key: FC<KeyProps> = ({ note, octave, freq }) => {
   };
 
   const notePressed: MouseEventHandler<HTMLButtonElement> = (e) => {
-    console.log(e);
     const newOscList = [...oscList];
-    // newOscList[octave].note = playTone();
     newOscList[octave] = { note: playTone() };
-    console.log({ newOscList });
     setOscList(newOscList);
   };
   const noteReleased: MouseEventHandler<HTMLButtonElement> = (e) => {
+    if (!oscList[octave]) return;
     oscList[octave].note.stop();
     delete oscList[octave].note;
   };
