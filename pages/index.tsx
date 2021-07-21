@@ -73,11 +73,6 @@ const Home: FC = () => {
               </div>
             </div>
             <p>Volume set to {volume}</p>
-            <div>
-              <pre>
-                <code>{JSON.stringify(createNoteTable(), null, 2)}</code>
-              </pre>
-            </div>
           </div>
         </>
       )}
