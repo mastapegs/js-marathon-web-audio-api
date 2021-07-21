@@ -1,4 +1,5 @@
 import { FC, useContext } from "react";
+import { Drum } from "../components/Drum";
 import { Header } from "../components/Header";
 import { Keyboard } from "../components/Keyboard";
 import { AudioContext } from "../contexts/AudioContext";
@@ -48,6 +49,7 @@ const Home: FC = () => {
             className="m-4 p-4 border border-gray-200 rounded shadow-lg"
           >
             <Keyboard />
+            <Drum />
             <div id="settingsBar">
               <div id="left">
                 <span>Volume: </span>
