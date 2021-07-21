@@ -33,6 +33,7 @@ module.exports = {
     ],
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
     "prettier/prettier": "error",
   },
 };
