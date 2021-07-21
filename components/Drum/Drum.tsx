@@ -36,14 +36,80 @@ export const Drum: FC = () => {
 
     return buffer;
   };
+  const distortionCurve = () => {
+    const curve = new Float32Array(65536);
+    let x = 0;
+
+    for (let i = 0; i < curve.length; i++) {
+      x = i / 65535;
+      curve[i] = 1 - x ** 1.5;
+    }
+
+    return curve;
+  };
+  const playSnare = () => {
+    if (!audioContext) return;
+    const lowTriangle = audioContext.createOscillator();
+    lowTriangle.type = "triangle";
+    lowTriangle.frequency.value = 185;
+
+    const highTriangle = audioContext.createOscillator();
+    highTriangle.type = "triangle";
+    highTriangle.frequency.value = 349;
+
+    const lowWaveShaper = audioContext.createWaveShaper();
+    lowWaveShaper.curve = distortionCurve(5);
+
+    const highWaveShaper = audioContext.createWaveShaper();
+    highWaveShaper.curve = distortionCurve(5);
+
+    const lowTriangleGainNode = audioContext.createGain();
+    lowTriangleGainNode.gain.value = 1;
+    lowTriangleGainNode.gain.linearRampToValueAtTime(
+      0,
+      audioContext.currentTime + 0.1
+    );
+
+    const highTriangleGainNode = audioContext.createGain();
+    highTriangleGainNode.gain.value = 1;
+    highTriangleGainNode.gain.linearRampToValueAtTime(
+      0,
+      audioContext.currentTime + 0.1
+    );
+
+    const snareGainNode = audioContext.createGain();
+    snareGainNode.gain.value = 1;
+
+    lowTriangle.connect(lowWaveShaper);
+    lowWaveShaper.connect(lowTriangleGainNode);
+    lowTriangleGainNode.connect(snareGainNode);
+    snareGainNode.connect(audioContext.destination);
+
+    highTriangle.connect(highWaveShaper);
+    highWaveShaper.connect(highTriangleGainNode);
+    highTriangleGainNode.connect(snareGainNode);
+
+    lowTriangle.start(audioContext.currentTime);
+    lowTriangle.stop(audioContext.currentTime + 1);
+
+    highTriangle.start(audioContext.currentTime);
+    highTriangle.stop(audioContext.currentTime + 1);
+  };
   return (
     <div id="drum">
       <button
         onClick={playKick}
         type="button"
-        className="inline-block my-4 px-8 py-4 text-white font-semibold bg-blue-600 rounded shadow"
+        className="inline-block mx-2 my-4 px-8 py-4 text-white font-semibold bg-blue-600 rounded shadow"
       >
         Kick Drum
+      </button>
+      <button
+        onClick={playSnare}
+        type="button"
+        className="inline-block my-4 px-8 py-4 text-white font-semibold bg-blue-600 rounded shadow"
+      >
+        Snare Drum
       </button>
     </div>
   );
