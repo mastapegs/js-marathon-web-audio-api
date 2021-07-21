@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="js-marathon-intro.html"><strong aria-hidden="true">1.</strong> JavaScript Marathon - Web Audio API</a></li><li class="chapter-item expanded "><a href="audio-context.html"><strong aria-hidden="true">2.</strong> Audio Context</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="js-marathon-intro.html"><strong aria-hidden="true">1.</strong> JavaScript Marathon - Web Audio API</a></li><li class="chapter-item expanded "><a href="what-is-web-audio-api/what-is-web-audio-api.html"><strong aria-hidden="true">2.</strong> What is the Web Audio API?</a></li><li class="chapter-item expanded "><a href="audio-context.html"><strong aria-hidden="true">3.</strong> Audio Context</a></li><li class="chapter-item expanded "><a href="oscillator-nodes.html"><strong aria-hidden="true">4.</strong> Oscillator Nodes</a></li><li class="chapter-item expanded "><a href="gain-nodes.html"><strong aria-hidden="true">5.</strong> Gain Nodes</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -161,12 +161,67 @@
 <li><a href="https://js-marathon-web-audio-api.netlify.app/">Deployment</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Simple_synth">VanillaJS Keyboard Example</a> from MDN</li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-the-web-audio-api"><a class="header" href="#what-is-the-web-audio-api">What is the Web Audio API?</a></h1>
+<p>From <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">MDN</a></p>
+<blockquote>
+<p>&quot;The Web Audio API provides a powerful and versatile system for controlling audio on the Web, allowing developers to choose audio sources, add effects to audio, create audio visualizations, apply spatial effects (such as panning) and much more.&quot;</p>
+</blockquote>
+<p>The <strong>Web Audio API</strong> was designed to allow <em>modular routing</em>. What this means is that as the developer, you create and link together different <strong>audio nodes</strong> to create an <strong>audio routing graph</strong>.</p>
+<p>Linking together different chains of audio nodes is what gives developers the flexibility to create complex audio effects.</p>
+<h2 id="basic-workflow"><a class="header" href="#basic-workflow">Basic Workflow</a></h2>
+<ol>
+<li>Create audio context</li>
+<li>Create audio sources within audio context (this repo uses <a href="https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode">OscillatorNode</a>s)</li>
+<li>Create effects, such as reverb, biquad filter, or gain</li>
+<li>Select final destination for audio</li>
+<li>Connect sources to effects and effects to destination</li>
+</ol>
+<p><img src="what-is-web-audio-api/./audio-context.png" alt="Web Audio API audio routing graph" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="audio-context"><a class="header" href="#audio-context">Audio Context</a></h1>
 <p>The starting point for manipulating sounds with the Web Audio API is the Audio Context. Here is how to create one.</p>
 <pre><code class="language-javascript">const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 </code></pre>
 <p>We need the portion with <code>window.webkitAudioContext</code> in order to support Safari and older versions of chrome.</p>
 <p>Generally speaking, your application should only ever have <a href="https://developers.google.com/web/updates/2012/01/Web-Audio-FAQ#q_how_many_audio_contexts_should_i_have">one</a> context per page. Since this application uses React, you'll find the Audio Context within the React Context that the app uses throughout the application.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="oscillator-nodes"><a class="header" href="#oscillator-nodes">Oscillator Nodes</a></h1>
+<h2 id="main-types-of-oscillator-nodes"><a class="header" href="#main-types-of-oscillator-nodes">Main Types of Oscillator Nodes</a></h2>
+<p>Oscillator Nodes come in 4 different <a href="https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/type">OscillatorType</a>'s</p>
+<ul>
+<li><strong>sine</strong>: the default value, these are pure, single-frequency, sound waves</li>
+<li><strong>triangle</strong>: made up of an infinite set of odd harmonic sine waves</li>
+<li><strong>square</strong>: also made up of an infinite set of odd harmonic sine waves, with upper harmonic amplitudes higher than triangle waves.</li>
+<li><strong>sawtooth</strong>: made up of an infinite set of harmonic sine waves waves.</li>
+</ul>
+<p>As you go down the list, the different waves make progressively &quot;buzzier&quot; sounds as the waveforms become made up of more and more sound waves.</p>
+<h2 id="how-to-create-an-oscillator-node"><a class="header" href="#how-to-create-an-oscillator-node">How to create an Oscillator Node</a></h2>
+<pre><code class="language-typescript">const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+const sinewave = audioContext.createOscillator();
+sinewave.type = &quot;sine&quot;;
+sinewave.frequency.value = 440; // A4
+sinewave.start();
+// sinewave.stop();
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="gain-nodes"><a class="header" href="#gain-nodes">Gain Nodes</a></h1>
+<h2 id="what-are-gain-nodes"><a class="header" href="#what-are-gain-nodes">What are Gain Nodes?</a></h2>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/GainNode">Gain nodes</a> are responsible for manipulating the amplitude of audio sources.</p>
+<h2 id="how-to-create-and-use-a-gain-node"><a class="header" href="#how-to-create-and-use-a-gain-node">How to create and use a Gain Node</a></h2>
+<pre><code class="language-typescript">const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+// Create sine OscillatorNode
+const sinewave = audioContext.createOscillator();
+sinewave.type = &quot;sine&quot;;
+sinewave.frequency.value = 440; // A4
+
+// Create and create audio node chain
+// OscillatorNode -&gt; GainNode -&gt; Destination
+const gainNode = audioContext.createGain();
+gainNode.gain.value = 0.5;
+sinewave.connect(gainNode)
+gainNode.connect(audioContext.destination);
+
+sinewave.start();
+</code></pre>
+<p>This app connects every single OscillatorNode created by the keyboard to a single GainNode which controls the volume of them all.</p>
 
                     </main>
 

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>JavaScript Marathon - Web Audio API</title>
+        <title>Oscillator Nodes</title>
                 
 
         <!-- Custom HTML head -->
@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="js-marathon-intro.html" class="active"><strong aria-hidden="true">1.</strong> JavaScript Marathon - Web Audio API</a></li><li class="chapter-item expanded "><a href="what-is-web-audio-api/what-is-web-audio-api.html"><strong aria-hidden="true">2.</strong> What is the Web Audio API?</a></li><li class="chapter-item expanded "><a href="audio-context.html"><strong aria-hidden="true">3.</strong> Audio Context</a></li><li class="chapter-item expanded "><a href="oscillator-nodes.html"><strong aria-hidden="true">4.</strong> Oscillator Nodes</a></li><li class="chapter-item expanded "><a href="gain-nodes.html"><strong aria-hidden="true">5.</strong> Gain Nodes</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="js-marathon-intro.html"><strong aria-hidden="true">1.</strong> JavaScript Marathon - Web Audio API</a></li><li class="chapter-item expanded "><a href="what-is-web-audio-api/what-is-web-audio-api.html"><strong aria-hidden="true">2.</strong> What is the Web Audio API?</a></li><li class="chapter-item expanded "><a href="audio-context.html"><strong aria-hidden="true">3.</strong> Audio Context</a></li><li class="chapter-item expanded "><a href="oscillator-nodes.html" class="active"><strong aria-hidden="true">4.</strong> Oscillator Nodes</a></li><li class="chapter-item expanded "><a href="gain-nodes.html"><strong aria-hidden="true">5.</strong> Gain Nodes</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -143,30 +143,34 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="javascript-marathon"><a class="header" href="#javascript-marathon">JavaScript Marathon</a></h1>
-<h2 id="web-audio-api"><a class="header" href="#web-audio-api">Web Audio API</a></h2>
-<p>There are many ways to interact with the user in a web application. You could render data to the DOM, or even render 3D visuals using WebGL and the canvas element.</p>
-<p>This repo shows a simple example of how to manipulate the <strong>Web Audio API</strong> to create sounds using the browser's built in synthesizer.</p>
-<h2 id="stack"><a class="header" href="#stack">Stack</a></h2>
+                        <h1 id="oscillator-nodes"><a class="header" href="#oscillator-nodes">Oscillator Nodes</a></h1>
+<h2 id="main-types-of-oscillator-nodes"><a class="header" href="#main-types-of-oscillator-nodes">Main Types of Oscillator Nodes</a></h2>
+<p>Oscillator Nodes come in 4 different <a href="https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/type">OscillatorType</a>'s</p>
 <ul>
-<li>NextJS</li>
-<li>TypeScript</li>
-<li>ESLint/Prettier</li>
-<li>TailwindCSS</li>
+<li><strong>sine</strong>: the default value, these are pure, single-frequency, sound waves</li>
+<li><strong>triangle</strong>: made up of an infinite set of odd harmonic sine waves</li>
+<li><strong>square</strong>: also made up of an infinite set of odd harmonic sine waves, with upper harmonic amplitudes higher than triangle waves.</li>
+<li><strong>sawtooth</strong>: made up of an infinite set of harmonic sine waves waves.</li>
 </ul>
-<h2 id="important-links"><a class="header" href="#important-links">Important Links</a></h2>
-<ul>
-<li><a href="https://github.com/mastapegs/js-marathon-web-audio-api">Repo</a></li>
-<li><a href="https://js-marathon-web-audio-api.netlify.app/">Deployment</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Simple_synth">VanillaJS Keyboard Example</a> from MDN</li>
-</ul>
+<p>As you go down the list, the different waves make progressively &quot;buzzier&quot; sounds as the waveforms become made up of more and more sound waves.</p>
+<h2 id="how-to-create-an-oscillator-node"><a class="header" href="#how-to-create-an-oscillator-node">How to create an Oscillator Node</a></h2>
+<pre><code class="language-typescript">const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+const sinewave = audioContext.createOscillator();
+sinewave.type = &quot;sine&quot;;
+sinewave.frequency.value = 440; // A4
+sinewave.start();
+// sinewave.stop();
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="audio-context.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
                         
-                                                    <a rel="next" href="what-is-web-audio-api/what-is-web-audio-api.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                                    <a rel="next" href="gain-nodes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -176,8 +180,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="audio-context.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
                 
-                                    <a rel="next" href="what-is-web-audio-api/what-is-web-audio-api.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                    <a rel="next" href="gain-nodes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                             </nav>
