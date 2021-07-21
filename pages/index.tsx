@@ -78,10 +78,8 @@ const Home: FC = () => {
                   <option value="sawtooth">Sawtooth</option>
                   <option value="triangle">Triangle</option>
                 </select>
-                <p>Waveform: {waveform}</p>
               </div>
             </div>
-            <p>Volume set to {volume}</p>
           </div>
         </>
       )}
