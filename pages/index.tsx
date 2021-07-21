@@ -14,7 +14,7 @@ const Home: FC = () => {
   return (
     <>
       <Header />
-      {!audioContext.state && (
+      {!audioContext && (
         <>
           <div
             id="container"
@@ -34,7 +34,7 @@ const Home: FC = () => {
           </div>
         </>
       )}
-      {audioContext.state && (
+      {audioContext && (
         <>
           <div
             id="container"
