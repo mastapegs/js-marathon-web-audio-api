@@ -13,3 +13,7 @@
 # Other Audio Nodes
 
 - [Bi-Quad Filter](./biquad-filter.md)
+
+# Template Repo for this Stack
+
+- [NextJS/Tailwind Starter](./starter.md)
