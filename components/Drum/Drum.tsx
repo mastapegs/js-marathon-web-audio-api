@@ -10,6 +10,7 @@ export const Drum: FC = () => {
 
     const gain = audioContext.createGain();
 
+    // kickDrum -> gain -> Speakers
     kickDrum.connect(gain);
     gain.connect(audioContext.destination);
 
