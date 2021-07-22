@@ -13,9 +13,9 @@ declare global {
 
 const Home: FC = () => {
   const {
-    audioContext,
-    setAudioContext,
-    volume,
+          audioContext,
+        setAudioContext,
+     volume,
     setVolume,
     waveform,
     setWaveform,
