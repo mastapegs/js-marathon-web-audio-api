@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { FC, useContext } from "react";
 import { Drum } from "../components/Drum";
 import { Header } from "../components/Header";
@@ -21,6 +22,14 @@ const Home: FC = () => {
   } = useContext(AudioContext);
   return (
     <>
+      <Head>
+        <title>Web Audio API</title>
+        <meta charSet="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no"
+        />
+      </Head>
       <Header />
       {!audioContext && (
         <>
