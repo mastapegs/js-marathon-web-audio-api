@@ -46,7 +46,7 @@ const Home: FC = () => {
               type="button"
               className="px-8 py-4 text-white font-semibold bg-blue-600 rounded shadow"
             >
-              Start Audio App
+              Commence the Audio Insanity!!!
             </button>
           </div>
         </>
